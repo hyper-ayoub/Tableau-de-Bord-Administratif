@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import ApexCharts from 'apexcharts';
 import { BsBoxSeam, BsPeople, BsTags, BsBell } from 'react-icons/bs';
-// import "./Style/Dashboard.css";
 export default function Dashboard() {
   
   useEffect(() => {

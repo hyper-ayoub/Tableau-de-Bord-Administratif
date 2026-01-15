@@ -11,7 +11,7 @@ const Categories = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // --- 1. FETCH DATA ---
+  //  1. FETCH DATA //
   const fetchCategories = async () => {
     setIsLoading(true);
     try {
@@ -28,13 +28,13 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
-  // --- 2. COLUMNS ---
+  //  COLUMNS  //
   const columns = useMemo(
     () => [
       {
         accessorKey: 'id',
         header: 'ID',
-        enableEditing: false, // User cannot change ID
+        enableEditing: false, 
         size: 80,
       },
       {
@@ -56,20 +56,17 @@ const Categories = () => {
     [],
   );
 
-  // --- 3. CRUD LOGIC (WORKING BUTTONS) ---
-
-  // CREATE: Adds a new row to the top of the list
+  ///CRUD///
   const handleCreateCategory = async ({ values, table }) => {
     const newRow = {
       ...values,
-      id: Math.floor(Math.random() * 1000), // Generate a fake ID
-      image: values.image || 'https://placehold.co/150', // Default image if empty
+      id: Math.floor(Math.random() * 1000), 
+      image: values.image || 'https://placehold.co/150'
     };
     setData([newRow, ...data]);
-    table.setCreatingRow(null); // CLOSE THE MODAL
+    table.setCreatingRow(null); 
   };
 
-  // UPDATE: Replaces the existing row with new values
   const handleSaveCategory = async ({ values, table }) => {
     const updatedData = [...data];
     const index = updatedData.findIndex((item) => item.id === values.id);
@@ -77,17 +74,17 @@ const Categories = () => {
       updatedData[index] = values;
       setData(updatedData);
     }
-    table.setEditingRow(null); // CLOSE THE MODAL
+    table.setEditingRow(null); 
   };
 
-  // DELETE: Removes the row from the list
+  // DELETE //
   const handleDeleteRow = (row) => {
     if (window.confirm(`Voulez-vous supprimer ${row.original.name}?`)) {
       setData(data.filter((item) => item.id !== row.original.id));
     }
   };
 
-  // --- 4. TABLE INSTANCE ---
+  // TABLE //
   const table = useMaterialReactTable({
     columns,
     data,
@@ -96,7 +93,6 @@ const Categories = () => {
     createDisplayMode: 'modal',
     getRowId: (row) => row.id,
     
-    // Connect the logic to the buttons
     onCreatingRowSave: handleCreateCategory,
     onEditingRowSave: handleSaveCategory,
 

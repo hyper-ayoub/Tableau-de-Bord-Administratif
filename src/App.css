@@ -16,7 +16,7 @@ h2 {
   grid-area: main;
   height: 100%;
   width: 100%;
-  overflow-y: auto; /* Scroll only inside the main section */
+  overflow-y: auto; 
   background-color: #f8fafc;
 }
 .icon {
@@ -38,21 +38,20 @@ left: 200px;
 
 .grid-container {
   display: grid;
-  /* Fixed Sidebar at 260px | The rest (1fr) for your Dashboard */
   grid-template-columns: 260px 1fr; 
   grid-template-rows: auto 1fr;
   grid-template-areas:
     'sidebar header'
-    'sidebar main'; /* "main" is the key area name */
+    'sidebar main'; 
   height: 100vh;
   width: 100vw;
 }
 .main-content-wrapper {
-  grid-area: main;      /* This connects the HTML div to the CSS Grid area */
-  display: flex;        /* Allows Navbar and Dashboard to stack vertically */
+  grid-area: main;      
+  display: flex;        
   flex-direction: column;
-  height: 100%;         /* Forces it to fill the entire 1fr space */
-  overflow-y: auto;     /* Adds a scrollbar only if the dashboard is long */
+  height: 100%;        
+  overflow-y: auto;     
 }
 /* Sidebar  */
 #sidebar {

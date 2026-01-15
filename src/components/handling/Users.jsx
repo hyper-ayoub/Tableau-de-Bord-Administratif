@@ -11,7 +11,7 @@ const Users = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // --- 1. FETCH DATA FROM RANDOMUSER ---
+  // FETCH DATA ///
   const fetchUsers = async () => {
     setIsLoading(true);
     try {
@@ -36,7 +36,7 @@ const Users = () => {
     fetchUsers();
   }, []);
 
-  // --- 2. COLUMN DEFINITIONS ---
+  //  COLUMN //
   const columns = useMemo(
     () => [
       {
@@ -70,9 +70,8 @@ const Users = () => {
     [],
   );
 
-  // --- 3. CRUD LOGIC (WORKING WITH IMAGES) ---
+  ///CRUD///
 
-  // CREATE: If the user doesn't provide an 'avatar' URL, we give them a random one
   const handleCreateUser = async ({ values, table }) => {
     const newUser = {
       ...values,
@@ -83,7 +82,7 @@ const Users = () => {
     table.setCreatingRow(null);
   };
 
-  // UPDATE: Change user details including the Avatar URL
+  // UPDATE //
   const handleSaveUser = async ({ values, table }) => {
     const updatedData = [...data];
     const index = updatedData.findIndex((item) => item.id === values.id);
@@ -100,7 +99,7 @@ const Users = () => {
     }
   };
 
-  // --- 4. TABLE INSTANCE ---
+  // TABLE //
   const table = useMaterialReactTable({
     columns,
     data,

@@ -11,13 +11,13 @@ const Produits = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // --- 1. FETCH DATA FROM DUMMYJSON ---
+  // FETCH DATA //
   const fetchProducts = async () => {
     setIsLoading(true);
     try {
       const response = await fetch('https://dummyjson.com/products');
       const json = await response.json();
-      setData(json.products); // dummyjson returns an object { products: [...] }
+      setData(json.products); 
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -28,7 +28,7 @@ const Produits = () => {
     fetchProducts();
   }, []);
 
-  // --- 2. COLUMN DEFINITIONS ---
+  // COLUMN ///
   const columns = useMemo(
     () => [
       {
@@ -40,7 +40,7 @@ const Produits = () => {
       {
         accessorKey: 'thumbnail',
         header: 'Image',
-        // We don't want to edit the raw URL string usually, but you can if needed
+      
         Cell: ({ cell }) => (
           <img 
             src={cell.getValue()} 
@@ -57,7 +57,6 @@ const Produits = () => {
         accessorKey: 'price',
         header: 'Prix ($)',
         size: 100,
-        // Custom formatting to add $ sign
         Cell: ({ cell }) => `$${cell.getValue()}`,
       },
       {
@@ -69,20 +68,19 @@ const Produits = () => {
     [],
   );
 
-  // --- 3. CRUD LOGIC (WORKING BUTTONS) ---
+  ///CRUD///
 
-  // CREATE: Adds new product to the list
   const handleCreateProduct = async ({ values, table }) => {
     const newProduct = {
       ...values,
       id: Math.floor(Math.random() * 10000), // Fake ID
-      thumbnail: values.thumbnail || 'https://placehold.co/150', // Placeholder
+      thumbnail: values.thumbnail || 'https://placehold.co/150',
     };
     setData([newProduct, ...data]);
     table.setCreatingRow(null); // Close Modal
   };
 
-  // UPDATE: Edits existing product
+  // UPDATE //
   const handleSaveProduct = async ({ values, table }) => {
     const updatedData = [...data];
     const index = updatedData.findIndex((item) => item.id === values.id);
@@ -100,7 +98,7 @@ const Produits = () => {
     }
   };
 
-  // --- 4. TABLE CONFIGURATION ---
+  // TABLE //
   const table = useMaterialReactTable({
     columns,
     data,
