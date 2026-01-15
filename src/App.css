@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1d2634;
+  color: #9e9ea4;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Indie Flower', cursive;
+  cursor: pointer;
+}
+h2 {
+  color: black;
+}
+.main-container {
+  grid-area: main;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto; /* Scroll only inside the main section */
+  background-color: #f8fafc;
+}
+.icon {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 20px;
+  margin-right: 5px;
+}
+.icon_header {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 26px;
+}
+img ,.icon_header{
+width: 200px;
+height: auto;
+left: 200px;
+}
+
+.grid-container {
+  display: grid;
+  /* Fixed Sidebar at 260px | The rest (1fr) for your Dashboard */
+  grid-template-columns: 260px 1fr; 
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'sidebar header'
+    'sidebar main'; /* "main" is the key area name */
+  height: 100vh;
+  width: 100vw;
+}
+.main-content-wrapper {
+  grid-area: main;      /* This connects the HTML div to the CSS Grid area */
+  display: flex;        /* Allows Navbar and Dashboard to stack vertically */
+  flex-direction: column;
+  height: 100%;         /* Forces it to fill the entire 1fr space */
+  overflow-y: auto;     /* Adds a scrollbar only if the dashboard is long */
+}
+/* Sidebar  */
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #263043;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px 0px 30px;
+  margin-bottom: 30px;
+}
+
+.sidebar-title > span {
+  display: none;
+}
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: -23px;
+}
+
+.sidebar-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 20px 20px 20px;
+  font-size: 18px;
+}
+
+.sidebar-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.sidebar-list-item > a {
+  text-decoration: none;
+  color: #9e9ea4;
+}
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  z-index: 12 !important;
+}
+
+/*responsive sections */
+
+/* Tablets and Mobile Phones */
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      'header'
+      'main';
+  }
+
+  #sidebar {
+    display: none; 
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+
+  .sidebar-responsive {
+    display: inline !important;
+    position: fixed; 
+    height: 100vh;
+    width: 260px;
+    z-index: 1000 !important;
+    background-color: #263043;
+    transition: all 0.5s;
+  }
+
+  img, .icon_header {
+    width: 150px; 
+    left: 0;     
+  }
+}
+
+/* Small Phones */
+@media screen and (max-width: 576px) {
+  .sidebar-brand {
+    font-size: 16px;
+    margin-left: 0;
+  }
+  
+  .sidebar-list-item {
+    padding: 15px;
+    font-size: 16px;
+  }
+}
