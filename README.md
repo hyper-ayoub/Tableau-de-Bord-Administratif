@@ -148,7 +148,6 @@ npm run eject      # Éjecter la configuration (irréversible)
 ---
 
 ### 🔐 Authentification
-> Système de connexion sécurisé
 
 <div align="center">
 <img width="70%" alt="Authentification" src="https://github.com/user-attachments/assets/0a1c3d27-1c23-4298-b361-577868c55e60" />
