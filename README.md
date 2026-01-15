@@ -39,6 +39,7 @@
 
 ### Authentification
 <img width="1575" height="675" alt="Authentification" src="https://github.com/user-attachments/assets/0a1c3d27-1c23-4298-b361-577868c55e60" />
+
 ### Authentification
 <img width="1554" height="724" alt="Graphiques statistiques" src="https://github.com/user-attachments/assets/88336d01-11e5-418f-98ce-97e28fa95487" />
 
