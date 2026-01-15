@@ -1,16 +1,60 @@
-# React + Vite
+# 📊 Tableau de Bord Administratif
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Repository :** [hyper-ayoub/Tableau-de-Bord-Administratif](https://github.com/hyper-ayoub/Tableau-de-Bord-Administratif)  
+**Description :** Un tableau de bord interactif pour l'administration d'un site, développé en **React.js**, avec des graphiques **Chart.js** et connecté à une **API** pour la gestion des données.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Fonctionnalités
 
-## React Compiler
+- **Visualisation des données** : Graphiques interactifs (Chart.js) pour suivre les statistiques.  
+- **Gestion des produits** : Ajouter, modifier, consulter et supprimer des produits.  
+- **Gestion des catégories** : CRUD complet pour organiser les produits.  
+- **Gestion des clients** : Consultation et modification des informations des clients.  
+- **Connexion à une API** : Récupération et mise à jour des données en temps réel.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠 Technologies Utilisées
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Frontend | Graphiques | Backend / API | Outils |
+|----------|------------|---------------|--------|
+| React.js | Chart.js   | REST API      | npm, Git, VSCode |
+| HTML     | CSS        | Node.js/Flask |        |
+
+
+## Testing
+
+### Tableau de bord principal
+<img width="1887" height="647" alt="Tableau de bord principal" src="https://github.com/user-attachments/assets/87ea38e8-25cf-4975-8834-8f332c9bbf0c" />
+
+### Gestion des produits
+<img width="1652" height="674" alt="Gestion des produits" src="https://github.com/user-attachments/assets/39c548cc-205f-4943-a318-3412e80e1614" />
+
+### Gestion des catégories
+<img width="1640" height="479" alt="Gestion des catégories" src="https://github.com/user-attachments/assets/ac3624e6-39ed-4410-9e15-34896b2f08da" />
+
+### Gestion des clients
+<img width="1644" height="615" alt="Gestion des clients" src="https://github.com/user-attachments/assets/d0a62edf-8490-4cbf-a02a-bb3e2ab974de" />
+
+### Authentification
+<img width="1575" height="675" alt="Authentification" src="https://github.com/user-attachments/assets/0a1c3d27-1c23-4298-b361-577868c55e60" />
+### Authentification
+<img width="1554" height="724" alt="Graphiques statistiques" src="https://github.com/user-attachments/assets/88336d01-11e5-418f-98ce-97e28fa95487" />
+
+---
+
+## Installation
+
+```bash
+# Cloner le dépôt
+git clone https://github.com/hyper-ayoub/Tableau-de-Bord-Administratif.git
+
+# Se rendre dans le dossier du projet
+cd Tableau-de-Bord-Administratif
+
+# Installer les dépendances
+npm install
+
+# Lancer le projet
+npm start
