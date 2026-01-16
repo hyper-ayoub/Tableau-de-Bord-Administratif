@@ -18,6 +18,7 @@ const Produits = () => {
       const response = await fetch('https://dummyjson.com/products');
       const json = await response.json();
       setData(json.products); 
+      localStorage.total = json.products.length;
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -78,6 +79,7 @@ const Produits = () => {
     };
     setData([newProduct, ...data]);
     table.setCreatingRow(null); // Close Modal
+    localStorage.added = (Number(localStorage.added) || 0) +1;
   };
 
   // UPDATE //
@@ -95,7 +97,9 @@ const Produits = () => {
   const handleDeleteProduct = (row) => {
     if (window.confirm(`Voulez-vous supprimer ${row.original.title}?`)) {
       setData(data.filter((item) => item.id !== row.original.id));
+      localStorage.deleted = (Number(localStorage.deleted) || 0) + 1;
     }
+   
   };
 
   // TABLE //
@@ -129,13 +133,11 @@ const Produits = () => {
       <Button
         variant="contained"
         onClick={() => table.setCreatingRow(true)}
-      >
-        + Ajouter un Produit
+      > + Ajouter un Produit
       </Button>
     ),
     state: { isLoading },
-  });
-
+  })
   return (
     <div style={{ padding: '10px' }}>
       <div style={{ marginBottom: '25px' }}>
