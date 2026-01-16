@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ApexCharts from 'apexcharts';
 import { BsBoxSeam, BsPeople, BsTags, BsBell } from 'react-icons/bs';
 export default function Dashboard() {
-  
+  const [stats, setStats] = useState({ products: 0, clients: 0, categories: 0 });
+  const [loading, setLoading] = useState(true);
+  const [total, setTotal] = useState(localStorage.total || 0);
+  const [totalcategories, setotalcategories] = useState(localStorage.totalcategories || 0);
+  const [totalclients, settotalclients] = useState(localStorage.totalclients || 0);
   useEffect(() => {
     const timer = setTimeout(() => {
       const prodArea = {
@@ -61,7 +65,9 @@ export default function Dashboard() {
         render("#cat-1", catColumn),
         render("#cat-2", catLine)
       ];
-
+      setTotal(+localStorage.total + (+localStorage.added || 0) - (+localStorage.deleted || 0));
+      setotalcategories((+localStorage.totalcategories || 0) + (+localStorage.addedCatgories || 0) - (+localStorage.deletedCatgories || 0));
+      settotalclients((+localStorage.totalclients || 0) + (+localStorage.addedClients || 0) - (+localStorage.deletedClients || 0));
     }, 100); 
 
     return () => {
@@ -80,9 +86,9 @@ export default function Dashboard() {
       </div>
 
       <div style={statsGridStyle}>
-        <StatCard title="Total Products" value="1,284" icon={<BsBoxSeam />} color="#6366f1" />
-        <StatCard title="Active Clients" value="850" icon={<BsPeople />} color="#10b981" />
-        <StatCard title="Categories" value="24" icon={<BsTags />} color="#f59e0b" />
+        <StatCard title="Total Products" value={total} icon={<BsBoxSeam />} color="#6366f1" />
+        <StatCard title="Active Clients" value={totalclients} icon={<BsPeople />} color="#10b981" />
+        <StatCard title="Categories" value={totalcategories} icon={<BsTags />} color="#f59e0b" />
         <StatCard title="System Alerts" value="12" icon={<BsBell />} color="#f43f5e" />
       </div>
 
