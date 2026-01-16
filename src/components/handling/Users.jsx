@@ -26,6 +26,7 @@ const Users = () => {
         avatar: u.picture.large, // The Image URL
       }));
       setData(formattedUsers);
+      localStorage.totalclients = formattedUsers.length; 
     } catch (error) {
       console.error("Error fetching users:", error);
     }
@@ -80,6 +81,7 @@ const Users = () => {
     };
     setData([newUser, ...data]);
     table.setCreatingRow(null);
+    localStorage.addedClients = (Number(localStorage.addedClients ) || 0) +1;
   };
 
   // UPDATE //
@@ -96,6 +98,7 @@ const Users = () => {
   const handleDeleteUser = (row) => {
     if (window.confirm(`Supprimer l'utilisateur ${row.original.firstName}?`)) {
       setData(data.filter((user) => user.id !== row.original.id));
+      localStorage.deletedClients = (Number(localStorage.deletedClients) || 0) + 1;
     }
   };
 
