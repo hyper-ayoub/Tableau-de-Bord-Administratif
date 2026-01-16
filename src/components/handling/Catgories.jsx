@@ -18,6 +18,7 @@ const Categories = () => {
       const response = await fetch('https://api.escuelajs.co/api/v1/categories');
       const json = await response.json();
       setData(json);
+      localStorage.totalcategories = json.length;
     } catch (error) {
       console.error("Error:", error);
     }
@@ -65,6 +66,7 @@ const Categories = () => {
     };
     setData([newRow, ...data]);
     table.setCreatingRow(null); 
+    localStorage.addedCatgories = (Number(localStorage.addedCatgories) || 0) +1;
   };
 
   const handleSaveCategory = async ({ values, table }) => {
@@ -81,7 +83,9 @@ const Categories = () => {
   const handleDeleteRow = (row) => {
     if (window.confirm(`Voulez-vous supprimer ${row.original.name}?`)) {
       setData(data.filter((item) => item.id !== row.original.id));
+      localStorage.deletedCatgories = (Number(localStorage.deletedCatgories) || 0) + 1;
     }
+
   };
 
   // TABLE //
